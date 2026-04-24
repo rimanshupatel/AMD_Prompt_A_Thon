@@ -45,7 +45,7 @@ describe('apiService', () => {
       })
     });
     
-    global.fetch = mockFetch;
+    vi.stubGlobal('fetch', mockFetch);
 
     const data = {
       mood: 'happy', stress: 2, sleep: 8, energy: 9, foodInput: 'salad', dosha: 'Pitta', city: 'Test City'
