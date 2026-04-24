@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useAppStore } from './store/MoodByteContext';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { Sidebar } from './components/Sidebar';
 import { Toast } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
-import { HomeTab } from './features/home/HomeTab';
-import { AnalyzeTab } from './features/analyze/AnalyzeTab';
-import { ScannerTab } from './features/scanner/ScannerTab';
-import { HistoryTab } from './features/history/HistoryTab';
-import { ProfileTab } from './features/profile/ProfileTab';
+const HomeTab = React.lazy(() => import('./features/home/HomeTab').then(m => ({ default: m.HomeTab })));
+const AnalyzeTab = React.lazy(() => import('./features/analyze/AnalyzeTab').then(m => ({ default: m.AnalyzeTab })));
+const ScannerTab = React.lazy(() => import('./features/scanner/ScannerTab').then(m => ({ default: m.ScannerTab })));
+const HistoryTab = React.lazy(() => import('./features/history/HistoryTab').then(m => ({ default: m.HistoryTab })));
+const ProfileTab = React.lazy(() => import('./features/profile/ProfileTab').then(m => ({ default: m.ProfileTab })));
 
 const AppContent: React.FC = () => {
   const { state, dispatch, isHydrated } = useAppStore();
@@ -35,8 +35,10 @@ const AppContent: React.FC = () => {
         
         <Sidebar />
 
-        <main id="main-content" className="main-content" role="main">
-          {renderTab()}
+        <main id="main-content" className="main-content" role="main" aria-live="polite">
+          <Suspense fallback={<div style={{ padding: '32px', textAlign: 'center' }}>Loading interface...</div>}>
+            {renderTab()}
+          </Suspense>
         </main>
 
         {state.toast && <Toast message={state.toast} onClose={() => dispatch({ type: 'HIDE_TOAST' })} />}

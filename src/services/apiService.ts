@@ -1,4 +1,3 @@
-import { THEME } from '../constants/theme';
 
 const MOCK_ANALYZE_RESPONSE = {
   serotonin: 85,

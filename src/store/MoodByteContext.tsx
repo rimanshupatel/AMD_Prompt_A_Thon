@@ -38,7 +38,7 @@ const MoodByteContext = createContext<ContextProps | undefined>(undefined);
 
 export const MoodByteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [storedData, setStoredData] = useLocalStorage('moodbyte_data', null);
+  const [storedData, setStoredData] = useLocalStorage<Partial<AppState> | null>('moodbyte_data', null);
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {

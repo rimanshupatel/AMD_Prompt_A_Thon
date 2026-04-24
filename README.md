@@ -1,73 +1,247 @@
-# MoodByte AI
+# 🧠🥗 MoodByte AI — Neuro-Nutrition Intelligence
 
-MoodByte AI is a scalable, neuro-nutrition AI health app built for the Prompt-a-thon 2025 hackathon. It utilizes Google Gemini (and supports Anthropic Claude) directly from the frontend to analyze your daily meals and mood, offering personalized Indian Ayurvedic healing meals and real-time physical/mental state forecasting.
+> **“We don’t just track food — we predict how it affects your brain before you eat.”**
 
-## 🌟 Features
+---
 
-- **Brain Report**: Logs your meals via text or voice, processes it with AI agents, and maps your emotional state to specific neurotransmitter needs.
-- **Healing Meals**: Recommends personalized Indian healing meals to act as an antidote to stress, dopamine crashes, and inflammatory diets.
-- **Junk Food Scanner**: Analyzes junk food impact on brain chemistry and provides an immediate recovery timeline and hydration plan.
-- **iOS Light Theme**: Built strictly utilizing an iOS design token object with glassmorphism, native Apple typography, and smooth micro-animations.
-- **Accessibility**: 100% ARIA-compliant, responsive, and keyboard accessible.
-- **Local Persistence**: History and settings stored locally using a robust `useLocalStorage` custom hook.
-- **Dynamic Charting**: Features Chart.js to map out 24-hour energy projections.
+## 🚀 Overview
+
+**MoodByte AI** is an AI-powered neuro-nutrition web app that helps users make smarter food decisions based on their **mood, body signals, and eating habits**.
+
+Unlike traditional calorie trackers, MoodByte AI uses **Google Gemini AI + behavioral inputs + digital simulation** to predict how food will impact your **energy, mood, and brain chemistry**.
+
+---
+
+## 🏆 Hackathon Value Proposition
+
+* 🧠 **Neuro-Nutrition Focus** — Food recommendations based on brain chemistry
+* 🤖 **AI-Powered Analysis** — Google Gemini API for real-time insights
+* 🔮 **Future Prediction Engine** — Simulates energy & mood changes
+* 📍 **Context-Aware Suggestions** — Uses geolocation for local food
+* 🎤 **Voice Input** — Fast food logging using speech recognition
+* 🎨 **iOS-Level UI** — Clean, modern, Apple-inspired design
+
+---
+
+## ✨ Features
+
+### 🧠 Mood-Based Analysis
+
+* Input mood (stressed, tired, focused, etc.)
+* Add sleep, stress, and energy levels
+* Get AI-powered brain analysis
+
+---
+
+### 🍽️ Smart Food Analysis
+
+* Describe meals or use voice input 🎤
+* AI maps food → nutrients → brain impact
+* Personalized recommendations
+
+---
+
+### 🔬 Digital Twin Simulation
+
+* Predict:
+
+  * ⚡ Energy levels (next 24 hrs)
+  * 😊 Mood changes
+  * 🧬 Neurotransmitter balance
+* Visualized using interactive charts
+
+---
+
+### 🚨 Junk Food Antidote Scanner
+
+* Enter junk food (pizza, samosa, etc.)
+* Get:
+
+  * Damage score 🔴
+  * Brain impact
+  * Recovery plan
+  * Antidote meal 🍲
+
+---
+
+### 📊 Dashboard & History
+
+* Track last 5 analyses
+* View trends and improvements
+* Quick access to past insights
+
+---
+
+### 🧘 Personalized Profile
+
+* Ayurvedic Dosha (Vata / Pitta / Kapha)
+* Personalized food alignment
+* Editable user profile
+
+---
 
 ## 🛠️ Tech Stack
 
-- **React 18** with strictly typed Hooks (`useState`, `useEffect`, `useReducer`, `useMemo`, `useCallback`)
-- **Vite** + **TypeScript** for scalable project architecture and build tooling.
-- **Pure CSS-in-JS**: Built completely with inline styling mapped to a global token system (No external UI libraries like Tailwind or Material UI).
-- **Google Gemini API** (via `generativelanguage.googleapis.com`) called entirely client-side.
-- **Chart.js** via dynamic CDN injection.
+* ⚛️ React (Vite)
+* 🟦 TypeScript
+* 🎨 CSS-in-JS (iOS Light Theme)
+* 📊 Chart.js (data visualization)
+* 🤖 Google Gemini API (AI engine)
+* 📍 Geolocation API
+* 🎤 Web Speech API
+* 💾 LocalStorage (state persistence)
 
-## 🚀 Installation & Setup
+---
 
-1. **Clone the repository** (if applicable) and navigate to the folder:
-   ```bash
-   cd moodbyte-ai
-   ```
+## ☁️ Deployment
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+* 🚀 Deployed on **Google Firebase Hosting (GCP)**
+* Fast, scalable, and reliable cloud delivery
 
-3. **Set up Environment Variables**:
-   Create a `.env` file in the root directory and add your API key:
-   ```env
-   VITE_GEMINI_API_KEY=your_gemini_api_key_here
-   ```
-   *(Note: If the variable is not set, the app will gracefully prompt you for an API key on the first load.)*
+---
 
-4. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+## ⚙️ Setup & Installation
 
-## 📁 Folder Structure
+### 1️⃣ Clone the repository
 
-```
-/src
-  /components     # Reusable UI shells (Card, Icons, Toast, NavBar)
-  /constants      # Theme tokens and app-wide constants
-  /features       # Tab-specific views (home, analyze, scanner, history, profile)
-  /hooks          # Custom React hooks (storage, charts, mic, geolocator)
-  /services       # Centralized API logic (apiService.ts)
-  /store          # Global State Context & useReducer implementation
-  /styles         # Global injected styles (CSS reset & animations)
-  /utils          # Helper functions (Environment-aware logging)
-  App.tsx         # Main entry shell tying together Context and Navigation
-  main.tsx        # React DOM Root
+```bash
+git clone https://github.com/your-username/moodbyte-ai.git
+cd moodbyte-ai
 ```
 
-## 🧠 How the AI Works
+---
 
-MoodByte AI uses an advanced prompt chain to act as an Ayurvedic Neuro-Nutrition expert. 
-1. When you analyze a meal, `apiService.ts` combines your `mood`, `stress`, `sleep`, `energy`, `foodInput`, and `dosha` type.
-2. It makes a direct client-side fetch call to Google Gemini (or Anthropic Claude depending on the key format).
-3. The AI is strictly instructed to return *only* a heavily typed JSON schema containing serotonin mapping, energy forecasts, and tailored Indian healing meals.
-4. The React state hydrates this payload into a visually rich `ResultDisplay` and `Chart.js` graph.
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Add Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_GEMINI_API_KEY=your_google_gemini_api_key
+```
+
+---
+
+### 4️⃣ Run the app locally
+
+```bash
+npm run dev
+```
+
+---
+
+### 5️⃣ Build for production
+
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deployment (Firebase)
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init
+npm run build
+firebase deploy
+```
+
+---
+
+## 🧠 How AI Works
+
+MoodByte AI uses **Google Gemini** to:
+
+1. Analyze mood + body signals
+2. Map food → nutrients → brain chemistry
+3. Predict future energy & mood
+4. Suggest personalized healing meals
+
+---
+
+## 🧪 Code Quality & Engineering
+
+* ✅ Modular architecture
+* ✅ Clean state management (useReducer)
+* ✅ Reusable hooks (custom logic separation)
+* ✅ Error handling + fallback responses
+* ✅ Accessible UI (ARIA, keyboard navigation)
+* ✅ Performance optimized (memoization, efficient renders)
+
+---
+
+## ♿ Accessibility
+
+* ARIA roles & labels
+* Keyboard navigation support
+* High contrast UI
+* Screen reader friendly
+
+---
+
+## 🔒 Security Notes
+
+* API key stored in `.env`
+* Recommended: restrict API key via Google Cloud Console
+
+---
 
 ## 📸 Screenshots
 
-*(Replace this placeholder with screenshots of your iOS Light Theme views!)*
+> *(Add screenshots here for better presentation)*
+
+---
+
+## 🎯 Problem Statement Alignment
+
+This project directly addresses:
+
+👉 Helping individuals make **better food choices**
+👉 Building **healthier eating habits**
+👉 Using **AI + contextual inputs (mood, behavior, location)**
+
+---
+
+## 🏁 Future Scope
+
+* Wearable integration (real biometrics)
+* Meal planning automation
+* AI nutrition coach chatbot
+* Community challenges & gamification
+
+---
+
+## 👨‍💻 Author
+
+**Rimanshu (Rishiii)**
+Passionate about AI, Frontend, and building impactful products 🚀
+
+---
+
+## 🎤 Demo Pitch (One Line)
+
+> “MoodByte AI uses Google Gemini to predict how your food affects your brain before you eat — helping you make smarter, healthier decisions.”
+
+---
+
+## ⭐ Final Note
+
+This project is built for a **Prompt-a-thon Hackathon**, focusing on:
+
+* Innovation 💡
+* AI Integration 🤖
+* UI/UX Excellence 🎨
+* Real-world impact 🌍
+
+---
+
+🔥 *Built with love by Rishiii* 🚀

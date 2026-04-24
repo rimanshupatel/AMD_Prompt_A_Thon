@@ -13,9 +13,13 @@ export const GlobalStyles: React.FC = () => (
       -webkit-font-smoothing: antialiased;
     }
     input, textarea, button { font-family: inherit; }
-    button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid ${THEME.colors.accentBlue};
-      outline-offset: 2px;
+    
+    /* Accessibility Focus States */
+    button:focus-visible, input:focus-visible, textarea:focus-visible, [role="tab"]:focus-visible, a:focus-visible {
+      outline: 3px solid ${THEME.colors.accentBlue} !important;
+      outline-offset: 3px !important;
+      box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.2);
+      border-radius: 4px;
     }
     
     /* Layout Foundations */

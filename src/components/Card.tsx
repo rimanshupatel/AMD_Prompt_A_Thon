@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export const Card: React.FC<{ children: React.ReactNode; style?: React.CSSProperties; className?: string }> = ({ children, style = {}, className = '' }) => (
-  <div className={`dashboard-card ${className}`} style={{ marginBottom: '16px', ...style }}>
+export const Card = memo(({ children, style = {}, className = '' }: { children: React.ReactNode; style?: React.CSSProperties; className?: string }) => (
+  <article className={`dashboard-card ${className}`} style={{ marginBottom: '16px', ...style }}>
     {children}
-  </div>
-);
+  </article>
+));
+Card.displayName = 'Card';
